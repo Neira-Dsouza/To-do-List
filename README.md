@@ -1,1 +1,1 @@
-# To-do-List
+A To-Do List in JavaScript lets users add, display, and delete tasks. It uses HTML for structure, CSS for styling, and JavaScript to handle input, update the list dynamically, and manage task data with arrays.
