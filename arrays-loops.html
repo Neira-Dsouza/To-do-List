@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To do List</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+            body{
+                background-color: rgb(82, 71, 203);
+                font-family:Arial, Helvetica, sans-serif;
+                font-size: 50px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color: rgb(255, 255, 255);
+            }
+            .card{
+                background-color: rgb(191, 197, 241);
+                border-radius: 15px;
+                 padding-bottom: 10px;
+                padding-right: 5px;
+                padding-top: 20px;
+                padding-left: 40px;
+            }
+            .add{
+                background-color: transparent;
+                border-color: transparent;
+                border-radius: 50%;
+                width: 45px;
+                height:45px;
+                padding-top: 5px;
+                cursor: pointer;
+            }
+            .add img{
+                width: 45px;
+                height:45px;
+            }
+            .inputs{
+                width:350px;
+                height:35px;
+                border-radius: 15px;
+                border-color: aliceblue;
+                 padding-bottom: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                padding-left:10px;
+                font-size: 25px;
+            
+            }
+            .dates{
+                width:200px;
+                height:35px;
+                border-radius: 15px;
+                border-color: aliceblue;
+                padding-bottom: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                padding-left:10px;
+                font-size: 25px;
+                color: rgb(107, 107, 148);
+            }
+            .input-grid {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                flex-wrap: wrap;
+                margin-bottom: 15px;
+            }
+            .htmls {
+                display: grid;
+                grid-template-columns: 350px 200px 100px;
+                column-gap: 10px;
+                row-gap: 10px;
+                font-size: 25px;
+                color: rgb(7, 5, 59);
+                padding-left: 10px;
+                padding-bottom: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                gap:28px;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>To do List</h1>
+        <div class="card grid">
+            <div class="input-grid">
+                <input placeholder="To do" class="inputs" onkeydown="event.key 
+                if(event.key==='Enter'){
+                    adding();
+                }
+                ">
+                <input type="date" class=" dates ">
+                <button onclick="
+                adding();
+                " class="add"><img src="add.png" class="addpic"></button>
+            </div>
+            <div class="htmls"></div>
+        </div>
+        <script>
+            const arr=[];
+            displays();
+            
+            function displays(){
+                //const list=['watch tv','drink water']
+                let todolistHTML='';
+                for(let i=0;i<arr.length;i++){
+                    const {name,dueDate}=arr[i];
+                    const html=`<div> ${name} </div> <div>${dueDate}</div>
+                        <button onclick="
+                        arr.splice(${i},1);
+                        displays();
+                        " class="add"><img src="delete.png" class=" addpic"></button>
+                    `;
+                    todolistHTML+=html;
+                    console.log(arr);
+                }
+                document.querySelector('.htmls').innerHTML=todolistHTML;
+
+            }
+            function adding(){
+                const inp=document.querySelector('.inputs');
+                const inps=document.querySelector('.dates');
+                const name=inp.value;
+                const names=inp.value.trim();
+                const dueDate=inps.value;
+                if(names===''){
+                    alert('Fill input box');
+                    return;
+                }
+                arr.push({name,dueDate});
+                inp.value='';
+                inps.value='';      
+                displays();
+            }
+                
+          
+        </script>
+    </body>
+</html>
